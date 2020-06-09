@@ -36,6 +36,7 @@ export default {
       url_base: 'https://api.openweathermap.org/data/2.5/',
       query: '',
       weather: {},
+      forecast: {}
     }
   },
   methods: {
@@ -44,12 +45,20 @@ export default {
         fetch(`${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`)
         .then(res => {
           return res.json();
-        }).then(this.setResults);
+        }).then(this.setResults)
+        .then(fetch(`${this.url_base}forecast?q=${this.query}&appid=${this.api_key}`)
+        .then(res => {
+          return res.json();
+        }).then(this.setForecast))
       }
     },
     setResults(results){
       this.weather = results;
       console.log(this.weather)
+    },
+    setForecast(results2){
+      this.forecast = results2;
+      console.log(this.forecast)
     },
     dateBuilder () {
       let d = new Date();

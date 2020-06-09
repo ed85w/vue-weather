@@ -9,10 +9,14 @@ npm run build
 # navigate into the build output directory
 cd dist
 
+# if you are deploying to a custom domain
+# echo 'www.edwalkerweb-sitetest.com' > CNAME
+
 git init
 git add -A
 git commit -m 'deploy'
 
+# username/repo name
 git push -f git@github.com:ed85w/vue-weather.git master:gh-pages
 
 cd -

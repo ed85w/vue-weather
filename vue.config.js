@@ -1,3 +1,5 @@
 module.exports = {
-  publicPath: '/vue-weather/' // github repo name //
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/vue-weather/'  //repo name or leave blank for custom domain//
+    : '/'
 }
